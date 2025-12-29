@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>勉強時間の目安計算｜学年・目的・試験日から週の目安をすぐ表示</title>
+  <meta name="description" content="学年・勉強の目的・試験日・努力量から、1週間あたりの勉強時間の目安を即表示。平日/土日のモデルケースも確認できます。学習計画の作成や合格保証ではなく、目安の確認に特化した無料ツールです。" />
+
+  <meta property="og:title" content="勉強時間の目安計算｜週の目安＋平日/土日モデル" />
+  <meta property="og:description" content="学年・目的・試験日・努力量から、週あたりの勉強時間の目安を即表示。計画作成や合格保証ではなく、目安の確認に特化。" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="https://cleverkitjp.github.io/common.css">
+
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6517NYNFF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F6517NYNFF');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9727255179923866"
+       crossorigin="anonymous"></script>
+
+  <style>
+    .wrap{ max-width: 720px; margin: 0 auto; padding: 14px 12px 18px; }
+    header{ margin: 8px 0 12px; }
+    h1{ font-size: 18px; margin: 0 0 6px; line-height: 1.35; }
+    .sub{ font-size: 12px; color: var(--text-sub); margin: 0; }
+    .grid{ display: grid; gap: 10px; }
+    .card{ background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 12px; box-shadow: var(--shadow-soft, none); }
+    .card h2{ font-size: 14px; margin: 0 0 10px; }
+    label{ display:block; font-size: 12px; color: var(--text-sub); margin: 10px 0 6px; }
+    select, input[type="date"]{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.2;
+      outline: none;
+    }
+    .row{ display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .quick{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .btn{
+      padding: 10px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 12px;
+      line-height: 1.1;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .primary{
+      background: var(--brand, #2563eb);
+      border-color: rgba(0,0,0,.06);
+      color: #fff;
+      font-weight: 700;
+    }
+    .resultTitle{ font-size: 14px; margin: 0 0 10px; }
+    .big{
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 6px;
+      letter-spacing: .2px;
+    }
+    .meta{ font-size: 12px; color: var(--text-sub); margin: 0 0 10px; }
+    .model{
+      display: grid;
+      gap: 6px;
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px dashed var(--border);
+      background: var(--card2, #f7fafc);
+    }
+    .model .line{ font-size: 13px; margin: 0; }
+    .note{ font-size: 12px; color: var(--text-sub); margin: 10px 0 0; }
+    details{ border-radius: 12px; border: 1px solid var(--border); background: #fff; padding: 10px 12px; }
+    summary{ cursor: pointer; font-size: 13px; font-weight: 700; }
+    .hint{ font-size: 12px; color: var(--text-sub); margin: 8px 0 0; line-height: 1.6; }
+    .pill{
+      display:inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    .spacer{ height: 8px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>勉強時間の目安計算</h1>
+      <p class="sub">学年・目的・試験日・努力量から、週の目安と平日/土日のモデルをすぐ表示します。</p>
+    </header>
+
+    <main class="grid">
+      <section class="card" aria-label="入力">
+        <h2>入力</h2>
+
+        <label for="grade">学年</label>
+        <select id="grade">
+          <option value="J1">中1</option>
+          <option value="J2">中2</option>
+          <option value="J3">中3</option>
+          <option value="H1">高1</option>
+          <option value="H2">高2</option>
+          <option value="H3">高3</option>
+        </select>
+
+        <label for="purpose">勉強の目的 <span class="pill">目安調整用</span></label>
+        <select id="purpose">
+          <option value="test">定期テスト中心</option>
+          <option value="start">受験を意識し始めた</option>
+          <option value="exam">受験対策が中心</option>
+          <option value="other">その他・未定</option>
+        </select>
+
+        <label for="level">めざすレベル</label>
+        <select id="level">
+          <option value="std">標準</option>
+          <option value="plus">少し頑張る</option>
+          <option value="high">かなり頑張る</option>
+        </select>
+
+        <label for="targetDate">目標日（試験日）</label>
+        <input id="targetDate" type="date" />
+
+        <div class="quick" aria-label="クイック選択">
+          <button class="btn" type="button" data-add-month="1">1か月後</button>
+          <button class="btn" type="button" data-add-month="3">3か月後</button>
+          <button class="btn" type="button" data-add-month="6">6か月後</button>
+          <button class="btn" type="button" data-add-month="12">12か月後</button>
+        </div>
+
+        <div class="spacer"></div>
+        <button class="btn primary" id="calcBtn" type="button">目安を表示</button>
+      </section>
+
+      <section class="card" aria-label="結果">
+        <h2>結果</h2>
+        <p class="resultTitle" id="resultTitle">入力すると、ここに目安が表示されます。</p>
+
+        <p class="big" id="weeklyHours">—</p>
+        <p class="meta" id="deadlineMeta">—</p>
+
+        <div class="model" id="modelBox" style="display:none;">
+          <p class="line" id="modelLine">—</p>
+          <p class="line" id="modelLine2">—</p>
+        </div>
+
+        <p class="note" id="noteText" style="display:none;">まずはこのくらいを目安に、2週間ほど試してみましょう。</p>
+
+        <div class="spacer"></div>
+
+        <details id="hintDetails">
+          <summary>勉強時間をつくるヒント（参考）</summary>
+          <div class="hint">
+            <div>勉強時間を増やす日は、スマホ・動画・ゲームの時間を少しだけ見直すのも一つの方法です。</div>
+            <div style="margin-top:6px;">スマホ・動画・ゲーム：<b>合計 60〜120分</b> が一つの目安。</div>
+            <div style="margin-top:6px;">勉強を＋30分したい日は、その分を少し減らすイメージでOKです。</div>
+          </div>
+        </details>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const $ = (id)=>document.getElementById(id);
+
+      const gradeEl = $('grade');
+      const purposeEl = $('purpose');
+      const levelEl = $('level');
+      const dateEl = $('targetDate');
+      const calcBtn = $('calcBtn');
+
+      const resultTitle = $('resultTitle');
+      const weeklyHours = $('weeklyHours');
+      const deadlineMeta = $('deadlineMeta');
+      const modelBox = $('modelBox');
+      const modelLine = $('modelLine');
+      const modelLine2 = $('modelLine2');
+      const noteText = $('noteText');
+
+      // ---- Helpers
+      function pad2(n){ return String(n).padStart(2,'0'); }
+      function toISODate(d){
+        return d.getFullYear() + '-' + pad2(d.getMonth()+1) + '-' + pad2(d.getDate());
+      }
+      function startOfDay(d){
+        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      }
+      function addMonths(date, m){
+        const d = new Date(date.getTime());
+        const day = d.getDate();
+        d.setMonth(d.getMonth() + m);
+        // 月末ズレ補正（例：1/31 + 1ヶ月 → 3/3 のような崩れを軽減）
+        if (d.getDate() < day) d.setDate(0);
+        return d;
+      }
+      function clamp(x, a, b){ return Math.max(a, Math.min(b, x)); }
+      function roundTo(x, step){
+        return Math.round(x / step) * step;
+      }
+      function ceilTo(x, step){
+        return Math.ceil(x / step) * step;
+      }
+      function formatHoursRange(low, high){
+        // 0.5h刻み、整数は「10時間」、小数は「10.5時間」
+        function fmt(v){
+          const isInt = Math.abs(v - Math.round(v)) < 1e-9;
+          return isInt ? String(Math.round(v)) : String(v);
+        }
+        return '週 ' + fmt(low) + '〜' + fmt(high) + '時間（目安）';
+      }
+
+      // ---- Title variants (目的別・行動起点)
+      const TITLE_BY_PURPOSE = {
+        test:  '定期テストに向けて、まず意識したい勉強量',
+        start: '受験を意識し始めた今、目安になる勉強量',
+        exam:  '受験対策を本格化する時期の目安',
+        other: '今の状況で意識したい勉強量の目安'
+      };
+
+      // ---- Base weekly hours at "about 6 months remaining" (heuristic, not a promise)
+      // Units: hours/week (center value)
+      const BASE = {
+        test:  { J1: 6,  J2: 7,  J3: 8.5, H1: 7,  H2: 8,  H3: 9 },
+        start: { J1: 7,  J2: 8,  J3: 10,  H1: 9,  H2: 11, H3: 12.5 },
+        exam:  { J1: 8,  J2: 9.5,J3: 12.5,H1: 11, H2: 14, H3: 17 },
+        other: { J1: 6.5,J2: 7.5,J3: 9,  H1: 8,  H2: 9.5,H3: 11 }
+      };
+
+      const LEVEL_FACTOR = { std: 1.00, plus: 1.15, high: 1.30 };
+
+      // Deadline factor: combine "締切効果" smoothly, avoid extremes.
+      // weeksRemaining around 26 (≈6 months) => factor ~1.0
+      function deadlineFactor(weeksRemaining){
+        const ratio = 26 / weeksRemaining;
+        const f = Math.pow(ratio, 0.35); // gentle curve
+        return clamp(f, 0.80, 1.60);
+      }
+
+      // Split weekly hours into weekday minutes + weekend hours (stable habit)
+      const WEEKDAY_SHARE = 0.65;
+
+      function ensureDateValid(){
+        const today = startOfDay(new Date());
+        let d = dateEl.value ? startOfDay(new Date(dateEl.value)) : null;
+
+        if (!d || isNaN(d.getTime())){
+          // 未入力 -> 3か月後
+          d = addMonths(today, 3);
+          dateEl.value = toISODate(d);
+          return d;
+        }
+        if (d.getTime() <= today.getTime()){
+          // 今日以前 -> 今日+1か月
+          d = addMonths(today, 1);
+          dateEl.value = toISODate(d);
+          return d;
+        }
+        return d;
+      }
+
+      function compute(){
+        const grade = gradeEl.value;
+        const purpose = purposeEl.value;
+        const level = levelEl.value;
+        const target = ensureDateValid();
+
+        const today = startOfDay(new Date());
+        const diffMs = target.getTime() - today.getTime();
+        const days = Math.max(1, Math.round(diffMs / (1000*60*60*24)));
+        const weeks = Math.max(1, Math.ceil(days / 7));
+
+        const base = (BASE[purpose] && BASE[purpose][grade]) ? BASE[purpose][grade] : 8;
+        const fDeadline = deadlineFactor(weeks);
+        const fLevel = LEVEL_FACTOR[level] || 1.0;
+
+        const center = base * fDeadline * fLevel;
+
+        // range ±12% (fixed)
+        const low = roundTo(center * 0.88, 0.5);
+        const high = ceilTo(center * 1.12, 0.5);
+
+        // Model case based on center (not on range)
+        const weekCenter = roundTo(center, 0.5);
+        const weekdayMinutes = roundTo((weekCenter * WEEKDAY_SHARE / 5) * 60, 5);
+        const weekendEach = roundTo((weekCenter * (1 - WEEKDAY_SHARE) / 2), 0.25);
+
+        // 목적별 제목 + 메타
+        resultTitle.textContent = TITLE_BY_PURPOSE[purpose] || TITLE_BY_PURPOSE.other;
+        weeklyHours.textContent = formatHoursRange(low, high);
+
+        deadlineMeta.textContent =
+          '目標日：' + toISODate(target) +
+          '（今日から ' + days + '日 / 約' + weeks + '週）';
+
+        modelLine.textContent = 'モデル：平日 ' + weekdayMinutes + '分 ×5日';
+        modelLine2.textContent = '　　　土日 ' + (Math.abs(weekendEach - Math.round(weekendEach)) < 1e-9 ? Math.round(weekendEach) : weekendEach) + '時間 ×2日';
+
+        modelBox.style.display = '';
+        noteText.style.display = '';
+      }
+
+      // Init
+      function init(){
+        // default date -> 3 months later
+        const today = startOfDay(new Date());
+        const d = addMonths(today, 3);
+        dateEl.value = toISODate(d);
+
+        // Quick buttons
+        document.querySelectorAll('button[data-add-month]').forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            const m = Number(btn.getAttribute('data-add-month') || '0');
+            const baseDate = startOfDay(new Date());
+            const next = addMonths(baseDate, m);
+            dateEl.value = toISODate(next);
+            compute();
+          });
+        });
+
+        calcBtn.addEventListener('click', compute);
+
+        // Auto compute on change (lightweight, no extra UI)
+        [gradeEl, purposeEl, levelEl, dateEl].forEach(el=>{
+          el.addEventListener('change', compute);
+        });
+
+        // First render
+        compute();
+      }
+
+      init();
+    })();
+  </script>
+
+  <div id="ck-footer-container"></div>
+
+  <script>
+    (function() {
+      var container = document.getElementById('ck-footer-container');
+      if (!container) return;
+
+      fetch('https://cleverkitjp.github.io/footer.html')
+        .then(function(response) { return response.text(); })
+        .then(function(html) {
+          container.innerHTML = html;
+
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          } catch (e) {
+            console.warn('adsbygoogle error', e);
+          }
+        })
+        .catch(function(e) {
+          console.warn('footer load error', e);
+        });
+    })();
+  </script>
+</body>
+</html>
