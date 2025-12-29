@@ -259,6 +259,170 @@ select{
 }
 
 /* Details */
+<style>
+/* ===== study-time : visibility-first styles ===== */
+.wrap{ max-width: 760px; margin: 0 auto; padding: 14px 12px 20px; }
+header{ margin: 10px 0 14px; }
+h1{ font-size: 20px; margin: 0 0 8px; line-height: 1.35; letter-spacing: .2px; }
+.sub{ font-size: 13px; color: var(--text-sub); margin: 0; line-height: 1.55; }
+
+.grid{ display: grid; gap: 12px; }
+
+/* Card */
+.card{
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+}
+.card h2{
+  font-size: 15px;
+  margin: 0 0 10px;
+  letter-spacing: .2px;
+}
+
+/* Input card emphasis */
+.card[aria-label="入力"]{
+  border-color: rgba(37,99,235,.35);
+  box-shadow: 0 10px 22px rgba(20,40,80,.08);
+}
+
+/* Labels */
+label{
+  display:block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 12px 0 6px;
+}
+
+/* Inputs */
+select, input[type="date"]{
+  width: 100%;
+  padding: 13px 12px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #f8fafc;
+  font-size: 16px;
+  line-height: 1.2;
+  outline: none;
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+}
+
+select:focus, input[type="date"]:focus{
+  border-color: var(--brand, #2563eb);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.14);
+  background: #ffffff;
+}
+
+/* Make select look like a control */
+select{
+  appearance: none;
+  padding-right: 40px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #6b7280 50%),
+    linear-gradient(135deg, #6b7280 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(50% - 3px),
+    calc(100% - 14px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* Pills */
+.pill{
+  display:inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 11px;
+  color: var(--text-sub);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Quick buttons: clearly buttons */
+.quick{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+.btn{
+  padding: 12px 10px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.1;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+.btn:active{ transform: translateY(1px); }
+
+/* Primary action */
+.primary{
+  background: var(--brand, #2563eb);
+  border-color: rgba(0,0,0,.05);
+  color: #fff;
+  font-weight: 900;
+  box-shadow: 0 10px 18px rgba(37,99,235,.18);
+}
+
+/* Selected state for quick buttons */
+.quick .btn.is-on{
+  border-color: var(--brand, #2563eb);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+}
+
+/* Results */
+.resultTitle{
+  font-size: 15px;
+  font-weight: 900;
+  margin: 0 0 10px;
+  line-height: 1.45;
+}
+.big{
+  font-size: 26px;
+  font-weight: 950;
+  margin: 0 0 6px;
+  letter-spacing: .2px;
+}
+.meta{
+  font-size: 12px;
+  color: var(--text-sub);
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+/* Model box */
+.model{
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 2px dashed rgba(15,23,42,.18);
+  background: #f1f5f9;
+}
+.model .line{
+  font-size: 14px;
+  margin: 0;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Note */
+.note{
+  font-size: 13px;
+  color: #0f172a;
+  font-weight: 800;
+  margin: 12px 0 0;
+}
+
+/* Details */
 details{
   border-radius: 14px;
   border: 2px solid var(--border);
@@ -285,7 +449,7 @@ summary{
   .grid{ grid-template-columns: 1fr 1fr; align-items: start; }
   h1{ font-size: 22px; }
 }
-  </style>
+</style>
 </head>
 
 <body>
