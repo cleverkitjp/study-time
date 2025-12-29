@@ -23,230 +23,223 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9727255179923866"
        crossorigin="anonymous"></script>
-<style>
-/* ===== study-time : visibility-first styles ===== */
-  /* page background */
-html, body{
-  background: #f3f6fb !important; /* 薄いグレー青 */
-}
-.wrap{ max-width: 760px; margin: 0 auto; padding: 14px 12px 20px; }
-header{ margin: 10px 0 14px; }
-h1{ font-size: 20px; margin: 0 0 8px; line-height: 1.35; letter-spacing: .2px; }
-.sub{ font-size: 13px; color: var(--text-sub); margin: 0; line-height: 1.55; }
 
-.grid{ display: grid; gap: 12px; }
+  <style>
+    /* ===== study-time : visibility-first styles ===== */
+    /* page background */
+    html, body{
+      background: #f3f6fb !important; /* 薄いグレー青 */
+    }
+    .wrap{ max-width: 760px; margin: 0 auto; padding: 14px 12px 20px; }
+    header{ margin: 10px 0 14px; }
+    h1{ font-size: 20px; margin: 0 0 8px; line-height: 1.35; letter-spacing: .2px; }
+    .sub{ font-size: 13px; color: var(--text-sub); margin: 0; line-height: 1.55; }
 
-/* Card */
-.card{
-  background: #fff;
-  border: 2px solid var(--border);
-  border-radius: 18px;
-  padding: 14px;
-}
-.card h2{
-  font-size: 15px;
-  margin: 0 0 10px;
-  letter-spacing: .2px;
-}
+    .grid{ display: grid; gap: 12px; }
 
-/* Input card emphasis */
-.card[aria-label="入力"]{
-  border-color: rgba(37,99,235,.35);
-  box-shadow: 0 10px 22px rgba(20,40,80,.08);
-}
+    /* Card */
+    .card{
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .card h2{
+      font-size: 15px;
+      margin: 0 0 10px;
+      letter-spacing: .2px;
+    }
 
-/* Labels */
-label{
-  display:block;
-  font-size: 13px;
-  font-weight: 800;
-  color: #0f172a;
-  margin: 12px 0 6px;
-}
+    /* Input card emphasis */
+    .card[aria-label="入力"]{
+      border-color: rgba(37,99,235,.35);
+      box-shadow: 0 10px 22px rgba(20,40,80,.08);
+    }
 
-/* Inputs */
-select, input[type="date"]{
-  width: 100%;
-  padding: 13px 12px;
-  border-radius: 14px;
-  border: 2px solid var(--border);
-  background: #f8fafc;
-  font-size: 16px;
-  line-height: 1.2;
-  outline: none;
-  box-shadow: 0 1px 0 rgba(0,0,0,.02);
-}
+    /* Labels */
+    label{
+      display:block;
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 12px 0 6px;
+    }
 
-select:focus, input[type="date"]:focus{
-  border-color: var(--brand, #2563eb);
-  box-shadow: 0 0 0 4px rgba(37,99,235,.14);
-  background: #ffffff;
-}
+    /* Inputs */
+    select, input[type="date"]{
+      width: 100%;
+      padding: 13px 12px;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      background: #f8fafc;
+      font-size: 16px;
+      line-height: 1.2;
+      outline: none;
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+    }
 
-/* Make select look like a control */
-select{
-  appearance: none;
-  padding-right: 40px;
-  background-image:
-    linear-gradient(45deg, transparent 50%, #6b7280 50%),
-    linear-gradient(135deg, #6b7280 50%, transparent 50%);
-  background-position:
-    calc(100% - 20px) calc(50% - 3px),
-    calc(100% - 14px) calc(50% - 3px);
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-}
+    select:focus, input[type="date"]:focus{
+      border-color: var(--brand, #2563eb);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.14);
+      background: #ffffff;
+    }
 
-/* Pills */
-.pill{
-  display:inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: #fff;
-  font-size: 11px;
-  color: var(--text-sub);
-  margin-left: 8px;
-  vertical-align: middle;
-}
+    /* Make select look like a control */
+    select{
+      appearance: none;
+      padding-right: 40px;
+      background-image:
+        linear-gradient(45deg, transparent 50%, #6b7280 50%),
+        linear-gradient(135deg, #6b7280 50%, transparent 50%);
+      background-position:
+        calc(100% - 20px) calc(50% - 3px),
+        calc(100% - 14px) calc(50% - 3px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+    }
 
-/* Quick buttons: clearly buttons */
-.quick{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-.btn{
-  padding: 12px 10px;
-  border-radius: 14px;
-  border: 2px solid var(--border);
-  background: #ffffff;
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1.1;
-  cursor: pointer;
-  user-select: none;
-  text-align: center;
-}
-.btn:active{ transform: translateY(1px); }
+    /* Pills */
+    .pill{
+      display:inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-left: 8px;
+      vertical-align: middle;
+    }
 
-/* Primary action */
-.primary{
-  background: var(--brand, #2563eb);
-  border-color: rgba(0,0,0,.05);
-  color: #fff;
-  font-weight: 900;
-  box-shadow: 0 10px 18px rgba(37,99,235,.18);
-}
+    /* Quick buttons: clearly buttons */
+    .quick{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .btn{
+      padding: 12px 10px;
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      background: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.1;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+    }
+    .btn:active{ transform: translateY(1px); }
 
-/* Selected state for quick buttons */
-.quick .btn.is-on{
-  border-color: var(--brand, #2563eb);
-  box-shadow: 0 0 0 4px rgba(37,99,235,.12);
-}
+    /* Selected state for quick buttons */
+    .quick .btn.is-on{
+      border-color: var(--brand, #2563eb);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+    }
 
-/* Results */
-.resultTitle{
-  font-size: 15px;
-  font-weight: 900;
-  margin: 0 0 10px;
-  line-height: 1.45;
-}
-.big{
-  font-size: 26px;
-  font-weight: 950;
-  margin: 0 0 6px;
-  letter-spacing: .2px;
-}
-.meta{
-  font-size: 12px;
-  color: var(--text-sub);
-  margin: 0 0 12px;
-  line-height: 1.5;
-}
+    /* Results */
+    .resultTitle{
+      font-size: 15px;
+      font-weight: 900;
+      margin: 0 0 10px;
+      line-height: 1.45;
+    }
+    .big{
+      font-size: 26px;
+      font-weight: 950;
+      margin: 0 0 6px;
+      letter-spacing: .2px;
+    }
+    .meta{
+      font-size: 12px;
+      color: var(--text-sub);
+      margin: 0 0 12px;
+      line-height: 1.5;
+    }
 
-/* Model box */
-.model{
-  display: grid;
-  gap: 8px;
-  padding: 12px;
-  border-radius: 14px;
-  border: 2px dashed rgba(15,23,42,.18);
-  background: #f1f5f9;
-}
-.model .line{
-  font-size: 14px;
-  margin: 0;
-  font-weight: 800;
-  color: #0f172a;
-}
+    /* Model box */
+    .model{
+      display: grid;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 2px dashed rgba(15,23,42,.18);
+      background: #f1f5f9;
+    }
+    .model .line{
+      font-size: 14px;
+      margin: 0;
+      font-weight: 800;
+      color: #0f172a;
+    }
 
-/* Note */
-.note{
-  font-size: 13px;
-  color: #0f172a;
-  font-weight: 800;
-  margin: 12px 0 0;
-}
+    /* Note */
+    .note{
+      font-size: 13px;
+      color: #0f172a;
+      font-weight: 800;
+      margin: 12px 0 0;
+    }
 
-/* Details */
-details{
-  border-radius: 14px;
-  border: 2px solid var(--border);
-  background: #fff;
-  padding: 12px;
-}
-summary{
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 900;
-}
-.hint{
-  font-size: 13px;
-  color: var(--text-sub);
-  margin: 10px 0 0;
-  line-height: 1.65;
-}
+    /* Details */
+    details{
+      border-radius: 14px;
+      border: 2px solid var(--border);
+      background: #fff;
+      padding: 12px;
+    }
+    summary{
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .hint{
+      font-size: 13px;
+      color: var(--text-sub);
+      margin: 10px 0 0;
+      line-height: 1.65;
+    }
 
-/* Small spacing helper */
-.spacer{ height: 10px; }
+    /* Small spacing helper */
+    .spacer{ height: 10px; }
 
-/* Desktop slight improvement */
-@media (min-width: 760px){
-  .grid{ grid-template-columns: 1fr 1fr; align-items: start; }
-  h1{ font-size: 22px; }
-}
-  /* Quick buttons: make them look like buttons no matter what */
-.quick{
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 10px !important;
-  margin-top: 10px !important;
-}
+    /* Desktop slight improvement */
+    @media (min-width: 760px){
+      .grid{ grid-template-columns: 1fr 1fr; align-items: start; }
+      h1{ font-size: 22px; }
+    }
 
-.quick .btn{
-  display: block !important;
-  width: 100% !important;
-  padding: 14px 10px !important;
-  border-radius: 14px !important;
-  border: 2px solid rgba(15,23,42,.18) !important;
-  background: #ffffff !important;
-  font-size: 15px !important;
-  font-weight: 900 !important;
-  text-align: center !important;
-  box-shadow: 0 6px 14px rgba(15,23,42,.08) !important;
-}
+    /* Quick buttons: make them look like buttons no matter what */
+    .quick{
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+      margin-top: 10px !important;
+    }
 
-.quick .btn:active{
-  transform: translateY(1px) !important;
-}
+    .quick .btn{
+      display: block !important;
+      width: 100% !important;
+      padding: 14px 10px !important;
+      border-radius: 14px !important;
+      border: 2px solid rgba(15,23,42,.18) !important;
+      background: #ffffff !important;
+      font-size: 15px !important;
+      font-weight: 900 !important;
+      text-align: center !important;
+      box-shadow: 0 6px 14px rgba(15,23,42,.08) !important;
+    }
 
-.quick .btn.is-on{
-  border-color: rgba(37,99,235,.75) !important;
-  box-shadow: 0 0 0 4px rgba(37,99,235,.14), 0 8px 18px rgba(37,99,235,.12) !important;
-}
-</style>
+    .quick .btn:active{
+      transform: translateY(1px) !important;
+    }
+
+    .quick .btn.is-on{
+      border-color: rgba(37,99,235,.75) !important;
+      box-shadow: 0 0 0 4px rgba(37,99,235,.14), 0 8px 18px rgba(37,99,235,.12) !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -269,6 +262,7 @@ summary{
           <option value="H2">高2</option>
           <option value="H3">高3</option>
         </select>
+
         <label for="purpose">勉強の目的 <span class="pill">目安調整用</span></label>
         <select id="purpose">
           <option value="test">定期テスト中心</option>
@@ -286,6 +280,7 @@ summary{
 
         <label for="targetDate">目標日（試験日）</label>
         <input id="targetDate" type="date" />
+
         <div class="sub" style="margin-top:6px;">◯か月後をワンタップでも目標日設定できるよ：</div>
         <div class="quick" aria-label="クイック選択">
           <button class="btn" type="button" data-add-month="1">1か月後</button>
@@ -293,6 +288,7 @@ summary{
           <button class="btn" type="button" data-add-month="6">6か月後</button>
           <button class="btn" type="button" data-add-month="12">12か月後</button>
         </div>
+
         <div class="spacer"></div>
       </section>
 
@@ -332,6 +328,7 @@ summary{
       const purposeEl = $('purpose');
       const levelEl = $('level');
       const dateEl = $('targetDate');
+
       const resultTitle = $('resultTitle');
       const weeklyHours = $('weeklyHours');
       const deadlineMeta = $('deadlineMeta');
@@ -372,16 +369,17 @@ summary{
         return '週 ' + fmt(low) + '〜' + fmt(high) + '時間（目安）';
       }
 
+      // 追加：時間を「◯時間◯分」に整形
+      function formatHM(hours){
+        const totalMinutes = Math.round(hours * 60);
+        const h = Math.floor(totalMinutes / 60);
+        const m = totalMinutes % 60;
 
-     function formatHM(hours){
-  const totalMinutes = Math.round(hours * 60);
-  const h = Math.floor(totalMinutes / 60);
-  const m = totalMinutes % 60;
+        if (h > 0 && m > 0) return h + '時間' + m + '分';
+        if (h > 0) return h + '時間';
+        return m + '分';
+      }
 
-  if (h > 0 && m > 0) return `${h}時間${m}分`;
-  if (h > 0) return `${h}時間`;
-  return `${m}分`;
-     } 
       // ---- Title variants (目的別・行動起点)
       const TITLE_BY_PURPOSE = {
         test:  '定期テストに向けて、まず意識したい勉強量',
@@ -409,7 +407,7 @@ summary{
         return clamp(f, 0.80, 1.60);
       }
 
-      // Split weekly hours into weekday minutes + weekend hours (stable habit)
+      // Split weekly hours into weekday + weekend (stable habit)
       const WEEKDAY_SHARE = 0.65;
 
       function ensureDateValid(){
@@ -454,10 +452,11 @@ summary{
 
         // Model case based on center (not on range)
         const weekCenter = roundTo(center, 0.5);
-        const weekdayMinutes = roundTo((weekCenter * WEEKDAY_SHARE / 5) * 60, 5);
-        const weekendEach = roundTo((weekCenter * (1 - WEEKDAY_SHARE) / 2), 0.25);
 
-        // 
+        // ここが修正点：平日も土日も「hours」で持ち、formatHMで表示
+        const weekdayHours = weekCenter * WEEKDAY_SHARE / 5;
+        const weekendHours = weekCenter * (1 - WEEKDAY_SHARE) / 2;
+
         resultTitle.textContent = TITLE_BY_PURPOSE[purpose] || TITLE_BY_PURPOSE.other;
         weeklyHours.textContent = formatHoursRange(low, high);
 
@@ -465,14 +464,13 @@ summary{
           '目標日：' + toISODate(target) +
           '（今日から ' + days + '日 / 約' + weeks + '週）';
 
-        modelLine.textContent = 'モデル：平日 ' + weekdayMinutes + '分 ×5日';
-        modelLine2.textContent = '　　　土日 ' + (Math.abs(weekendEach - Math.round(weekendEach)) < 1e-9 ? Math.round(weekendEach) : weekendEach) + '時間 ×2日';
+        modelLine.textContent = 'モデル：平日 ' + formatHM(weekdayHours) + ' ×5日';
+        modelLine2.textContent = '　　　土日 ' + formatHM(weekendHours) + ' ×2日';
 
         modelBox.style.display = '';
         noteText.style.display = '';
       }
 
-      // Init
       function init(){
         // default date -> 3 months later
         const today = startOfDay(new Date());
@@ -480,26 +478,22 @@ summary{
         dateEl.value = toISODate(d);
 
         // Quick buttons（選択状態を視覚化）
-const quickButtons = document.querySelectorAll('button[data-add-month]');
+        const quickButtons = document.querySelectorAll('button[data-add-month]');
+        quickButtons.forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            quickButtons.forEach(b => b.classList.remove('is-on'));
+            btn.classList.add('is-on');
 
-quickButtons.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    // すべての選択状態を解除
-    quickButtons.forEach(b => b.classList.remove('is-on'));
+            const m = Number(btn.getAttribute('data-add-month') || '0');
+            const baseDate = startOfDay(new Date());
+            const next = addMonths(baseDate, m);
+            dateEl.value = toISODate(next);
 
-    // 押したボタンを選択状態に
-    btn.classList.add('is-on');
+            compute();
+          });
+        });
 
-    const m = Number(btn.getAttribute('data-add-month') || '0');
-    const baseDate = startOfDay(new Date());
-    const next = addMonths(baseDate, m);
-    dateEl.value = toISODate(next);
-
-    compute();
-  });
-});
-
-        // Auto compute on change (lightweight, no extra UI)
+        // Auto compute on change
         [gradeEl, purposeEl, levelEl, dateEl].forEach(el=>{
           el.addEventListener('change', compute);
         });
