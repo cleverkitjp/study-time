@@ -31,9 +31,27 @@
       background: #f3f6fb !important; /* 薄いグレー青 */
     }
     .wrap{ max-width: 760px; margin: 0 auto; padding: 14px 12px 20px; }
-    header{ margin: 10px 0 14px; }
-    h1{ font-size: 20px; margin: 0 0 8px; line-height: 1.35; letter-spacing: .2px; }
-    .sub{ font-size: 13px; color: var(--text-sub); margin: 0; line-height: 1.55; }
+    header{
+      margin: 10px 0 14px;
+      padding: 16px 14px;
+      border-radius: 16px;
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 10px 18px rgba(37,99,235,.22);
+    }
+    h1{
+      font-size: 20px;
+      margin: 0 0 8px;
+      line-height: 1.35;
+      letter-spacing: .2px;
+      color: #ffffff;
+    }
+    .sub{
+      font-size: 13px;
+      color: #e6efff;
+      margin: 0;
+      line-height: 1.55;
+    }
 
     .grid{ display: grid; gap: 12px; }
 
@@ -245,7 +263,7 @@
 <body>
   <div class="wrap">
     <header>
-      <h1>勉強時間の目安計算</h1>
+      <h1>中学生・高校生 勉強の目安計算</h1>
       <p class="sub">学年・目的・試験日・努力量から、週の目安と平日/土日のモデルをすぐ表示します。</p>
     </header>
 
@@ -369,15 +387,10 @@
         return '週 ' + fmt(low) + '〜' + fmt(high) + '時間（目安）';
       }
 
-      // 追加：時間を「◯時間◯分」に整形
-      function formatHM(hours){
-        const totalMinutes = Math.round(hours * 60);
-        const h = Math.floor(totalMinutes / 60);
-        const m = totalMinutes % 60;
-
-        if (h > 0 && m > 0) return h + '時間' + m + '分';
-        if (h > 0) return h + '時間';
-        return m + '分';
+      // 追加：時間を「◯.◯時間」に整形（0.5時間刻み）
+      function formatDecimalHours(hours){
+        const rounded = roundTo(hours, 0.5);
+        return rounded.toFixed(1) + '時間';
       }
 
       // ---- Title variants (目的別・行動起点)
@@ -464,8 +477,8 @@
           '目標日：' + toISODate(target) +
           '（今日から ' + days + '日 / 約' + weeks + '週）';
 
-        modelLine.textContent = 'モデル：平日 ' + formatHM(weekdayHours) + ' ×5日';
-        modelLine2.textContent = '　　　土日 ' + formatHM(weekendHours) + ' ×2日';
+        modelLine.textContent = 'モデル：平日 ' + formatDecimalHours(weekdayHours) + ' ×5日';
+        modelLine2.textContent = '　　　土日 ' + formatDecimalHours(weekendHours) + ' ×2日';
 
         modelBox.style.display = '';
         noteText.style.display = '';
