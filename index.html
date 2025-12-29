@@ -92,6 +92,7 @@
       background: #f8fafc;
       font-size: 16px;
       line-height: 1.2;
+      box-sizing: border-box;
       outline: none;
       box-shadow: 0 1px 0 rgba(0,0,0,.02);
     }
@@ -257,6 +258,13 @@
       border-color: rgba(37,99,235,.75) !important;
       box-shadow: 0 0 0 4px rgba(37,99,235,.14), 0 8px 18px rgba(37,99,235,.12) !important;
     }
+
+    .quick-hint{
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+    }
   </style>
 </head>
 
@@ -299,7 +307,7 @@
         <label for="targetDate">目標日（試験日）</label>
         <input id="targetDate" type="date" />
 
-        <div class="sub" style="margin-top:6px;">◯か月後をワンタップでも目標日設定できるよ：</div>
+        <div class="quick-hint">ワンタップで目標日を設定↓</div>
         <div class="quick" aria-label="クイック選択">
           <button class="btn" type="button" data-add-month="1">1か月後</button>
           <button class="btn" type="button" data-add-month="3">3か月後</button>
