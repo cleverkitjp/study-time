@@ -261,7 +261,6 @@ summary{
           <button class="btn" type="button" data-add-month="12">12か月後</button>
         </div>
         <div class="spacer"></div>
-        <button class="btn primary" id="calcBtn" type="button">目安を表示</button>
       </section>
 
       <section class="card" aria-label="結果">
@@ -300,8 +299,6 @@ summary{
       const purposeEl = $('purpose');
       const levelEl = $('level');
       const dateEl = $('targetDate');
-      const calcBtn = $('calcBtn');
-
       const resultTitle = $('resultTitle');
       const weeklyHours = $('weeklyHours');
       const deadlineMeta = $('deadlineMeta');
@@ -458,8 +455,6 @@ quickButtons.forEach(btn=>{
     compute();
   });
 });
-
-        calcBtn.addEventListener('click', compute);
 
         // Auto compute on change (lightweight, no extra UI)
         [gradeEl, purposeEl, levelEl, dateEl].forEach(el=>{
