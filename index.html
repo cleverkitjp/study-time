@@ -100,6 +100,64 @@
       vertical-align: middle;
     }
     .spacer{ height: 8px; }
+    /* ===== UX強化：フォームの視認性 ===== */
+.card[aria-label="入力"]{
+  border-width: 2px;
+}
+
+label{
+  font-weight: 700;
+  color: var(--text, #111827);
+}
+
+select, input[type="date"]{
+  background: #f8fafc;            /* 入力欄に薄い面を付ける */
+  border: 2px solid var(--border);
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+}
+
+select:focus, input[type="date"]:focus{
+  border-color: var(--brand, #2563eb);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+}
+
+select{
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #6b7280 50%),
+    linear-gradient(135deg, #6b7280 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 12px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 36px;
+}
+/* ===== クイック選択を“押せる”に寄せる ===== */
+.quick{
+  grid-template-columns: repeat(2, 1fr); /* スマホは2列の方が押しやすい */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quick .btn{
+  font-size: 13px;
+  padding: 12px 10px;
+  border: 2px solid var(--border);
+  background: #ffffff;
+  font-weight: 700;
+}
+
+.quick .btn:active{
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 0 rgba(0,0,0,.06);
+}
+
+/* 選択されたボタンを強調（JSで付けるクラス用） */
+.quick .btn.is-on{
+  border-color: var(--brand, #2563eb);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.10);
+}    
   </style>
 </head>
 
@@ -148,6 +206,7 @@
           <button class="btn" type="button" data-add-month="6">6か月後</button>
           <button class="btn" type="button" data-add-month="12">12か月後</button>
         </div>
+        <div class="sub" style="margin-top:6px;">よく使う期間をワンタップ：</div>
 
         <div class="spacer"></div>
         <button class="btn primary" id="calcBtn" type="button">目安を表示</button>
@@ -306,7 +365,7 @@
         const weekdayMinutes = roundTo((weekCenter * WEEKDAY_SHARE / 5) * 60, 5);
         const weekendEach = roundTo((weekCenter * (1 - WEEKDAY_SHARE) / 2), 0.25);
 
-        // 목적별 제목 + 메타
+        // 
         resultTitle.textContent = TITLE_BY_PURPOSE[purpose] || TITLE_BY_PURPOSE.other;
         weeklyHours.textContent = formatHoursRange(low, high);
 
@@ -330,14 +389,18 @@
 
         // Quick buttons
         document.querySelectorAll('button[data-add-month]').forEach(btn=>{
-          btn.addEventListener('click', ()=>{
-            const m = Number(btn.getAttribute('data-add-month') || '0');
-            const baseDate = startOfDay(new Date());
-            const next = addMonths(baseDate, m);
-            dateEl.value = toISODate(next);
-            compute();
-          });
-        });
+  btn.addEventListener('click', ()=>{
+    // 見た目の選択状態
+    document.querySelectorAll('button[data-add-month]').forEach(b=>b.classList.remove('is-on'));
+    btn.classList.add('is-on');
+
+    const m = Number(btn.getAttribute('data-add-month') || '0');
+    const baseDate = startOfDay(new Date());
+    const next = addMonths(baseDate, m);
+    dateEl.value = toISODate(next);
+    compute();
+  });
+});
 
         calcBtn.addEventListener('click', compute);
 
