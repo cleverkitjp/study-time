@@ -3,12 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>勉強時間の目安計算｜学年・目的・試験日から週の目安をすぐ表示</title>
-  <meta name="description" content="学年・勉強の目的・試験日・努力量から、1週間あたりの勉強時間の目安を即表示。平日/土日のモデルケースも確認できます。学習計画の作成や合格保証ではなく、目安の確認に特化した無料ツールです。" />
 
+  <title>勉強時間の目安計算｜学年・目的・試験日から週の目安をすぐ表示</title>
+  <meta name="description" content="学年・勉強の目的・試験日・取り組み方（スタンス）から、1週間あたりの勉強時間の目安を即表示。平日/土日のモデルケースも確認できます。学習計画の作成や合格保証ではなく、目安の確認に特化した無料ツールです。" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://cleverkitjp.github.io/study-time/" />
+
+  <!-- OGP -->
   <meta property="og:title" content="勉強時間の目安計算｜週の目安＋平日/土日モデル" />
-  <meta property="og:description" content="学年・目的・試験日・努力量から、週あたりの勉強時間の目安を即表示。計画作成や合格保証ではなく、目安の確認に特化。" />
+  <meta property="og:description" content="学年・目的・試験日・取り組み方（スタンス）から、週あたりの勉強時間の目安を即表示。平日/土日モデルも確認できます。" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cleverkitjp.github.io/study-time/" />
+  <!-- ↓ OGP画像はこのパスに配置してください（例: /study-time/ogp.png） -->
+  <meta property="og:image" content="https://cleverkitjp.github.io/study-time/ogp.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="勉強時間の目安計算｜週の目安＋平日/土日モデル" />
+  <meta name="twitter:description" content="学年・目的・試験日・取り組み方（スタンス）から、週の勉強時間の目安をすぐ表示。" />
+  <meta name="twitter:image" content="https://cleverkitjp.github.io/study-time/ogp.png" />
 
   <link rel="stylesheet" href="https://cleverkitjp.github.io/common.css">
 
@@ -21,16 +37,20 @@
     gtag('config', 'G-F6517NYNFF');
   </script>
 
+  <!-- AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9727255179923866"
        crossorigin="anonymous"></script>
 
   <style>
     /* ===== study-time : visibility-first styles ===== */
+
     /* page background */
     html, body{
       background: #f3f6fb !important; /* 薄いグレー青 */
     }
+
     .wrap{ max-width: 760px; margin: 0 auto; padding: 14px 12px 20px; }
+
     header{
       margin: 10px 0 14px;
       padding: 16px 14px;
@@ -39,6 +59,7 @@
       color: #ffffff;
       box-shadow: 0 10px 18px rgba(37,99,235,.22);
     }
+
     h1{
       font-size: 20px;
       margin: 0 0 8px;
@@ -46,6 +67,7 @@
       letter-spacing: .2px;
       color: #ffffff;
     }
+
     .sub{
       font-size: 13px;
       color: #e6efff;
@@ -130,31 +152,41 @@
       vertical-align: middle;
     }
 
-    /* Quick buttons: clearly buttons */
+    /* Quick buttons */
+    .quick-hint{
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
     .quick{
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       margin-top: 10px;
     }
+
     .btn{
-      padding: 12px 10px;
+      display: block;
+      width: 100%;
+      padding: 14px 10px;
       border-radius: 14px;
-      border: 2px solid var(--border);
+      border: 2px solid rgba(15,23,42,.18);
       background: #ffffff;
-      font-size: 14px;
-      font-weight: 800;
-      line-height: 1.1;
+      font-size: 15px;
+      font-weight: 900;
+      text-align: center;
       cursor: pointer;
       user-select: none;
-      text-align: center;
+      box-shadow: 0 6px 14px rgba(15,23,42,.08);
     }
+
     .btn:active{ transform: translateY(1px); }
 
-    /* Selected state for quick buttons */
     .quick .btn.is-on{
-      border-color: var(--brand, #2563eb);
-      box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+      border-color: rgba(37,99,235,.75);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.14), 0 8px 18px rgba(37,99,235,.12);
     }
 
     /* Results */
@@ -223,47 +255,12 @@
     /* Small spacing helper */
     .spacer{ height: 10px; }
 
-    /* Desktop slight improvement */
+    /* Desktop */
     @media (min-width: 760px){
       .grid{ grid-template-columns: 1fr 1fr; align-items: start; }
       h1{ font-size: 22px; }
-    }
-
-    /* Quick buttons: make them look like buttons no matter what */
-    .quick{
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 10px !important;
-      margin-top: 10px !important;
-    }
-
-    .quick .btn{
-      display: block !important;
-      width: 100% !important;
-      padding: 14px 10px !important;
-      border-radius: 14px !important;
-      border: 2px solid rgba(15,23,42,.18) !important;
-      background: #ffffff !important;
-      font-size: 15px !important;
-      font-weight: 900 !important;
-      text-align: center !important;
-      box-shadow: 0 6px 14px rgba(15,23,42,.08) !important;
-    }
-
-    .quick .btn:active{
-      transform: translateY(1px) !important;
-    }
-
-    .quick .btn.is-on{
-      border-color: rgba(37,99,235,.75) !important;
-      box-shadow: 0 0 0 4px rgba(37,99,235,.14), 0 8px 18px rgba(37,99,235,.12) !important;
-    }
-
-    .quick-hint{
-      margin-top: 6px;
-      font-size: 13px;
-      font-weight: 800;
-      color: #0f172a;
+      .quick{ grid-template-columns: repeat(4, 1fr); }
+      .btn{ font-size: 14px; padding: 12px 10px; }
     }
   </style>
 </head>
@@ -272,7 +269,7 @@
   <div class="wrap">
     <header>
       <h1>中学生・高校生 勉強の目安計算</h1>
-      <p class="sub">学年・目的・試験日・努力量から、週の目安と平日/土日のモデルをすぐ表示します。</p>
+      <p class="sub">学年・目的・試験日・取り組み方（スタンス）から、週の目安と平日/土日のモデルをすぐ表示します。</p>
     </header>
 
     <main class="grid">
@@ -297,7 +294,7 @@
           <option value="other">その他・未定</option>
         </select>
 
-        <label for="level">めざすレベル</label>
+        <label for="level">時間のかけ方（スタンス）</label>
         <select id="level">
           <option value="std">標準</option>
           <option value="plus">標準より少し多めに取り組む</option>
@@ -342,43 +339,43 @@
             <div style="margin-top:6px;">勉強を＋30分したい日は、その分を少し減らすイメージでOKです。</div>
           </div>
         </details>
+
+        <div class="spacer"></div>
+
+        <details>
+          <summary>この目安は、どんな考え方で出していますか？</summary>
+          <div class="hint">
+            <p>
+              このツールの勉強時間は、<b>「一般的な学年別の学習量」「目的（定期テスト・受験など）」「残り期間」「取り組み方（スタンス）」</b>
+              を組み合わせて、<b>意識しやすい目安</b>を出しています。
+            </p>
+            <p>
+              受験が近づくほど学習時間が増える傾向はありますが、短期間で極端に時間を増やすと続きにくいため、
+              <b>続けやすい増え方</b>になるよう調整しています。
+            </p>
+            <p>
+              表示しているのは<b>「最低ライン」や「ノルマ」ではありません</b>。あくまで参考値です。
+            </p>
+          </div>
+        </details>
+
+        <div class="spacer"></div>
+
+        <details>
+          <summary>スマホ・動画・ゲーム時間の目安について</summary>
+          <div class="hint">
+            <p>
+              スマホや動画、ゲームの時間は、<b>「完全にやめる」ことを前提にしていません</b>。
+              「勉強時間を少し増やしたいときに、調整しやすい範囲」として <b>1日60〜120分</b> を参考表示しています。
+            </p>
+            <p>
+              勉強を30分増やしたい日は、スマホ時間を30分だけ見直す。そんな<b>現実的なバランス</b>のイメージづくりが目的です。
+            </p>
+          </div>
+        </details>
       </section>
-    <details>
-  <summary>この目安は、どんな考え方で出していますか？</summary>
-  <div class="hint">
-    <p>
-      このツールの勉強時間は、<b>「一般的な学年別の学習量」「目的（定期テスト・受験など）」「残り期間」「努力量」</b>
-      を組み合わせて、<b>無理のない範囲で意識しやすい目安</b>を出しています。
-    </p>
-    <p>
-      例えば、受験が近づくほど勉強時間は少しずつ増える傾向がありますが、
-      短期間で極端に時間を増やすと続きにくいため、
-      <b>「現実的に続けられる増え方」</b>になるよう調整しています。
-    </p>
-    <p>
-      また、表示しているのは<b>「最低ライン」や「ノルマ」ではありません</b>。
-      あくまで「このくらいを意識できると安心」という参考値です。
-    </p>
-  </div>
-    </details>
-  <details>
-  <summary>スマホ・動画・ゲーム時間の目安について</summary>
-  <div class="hint">
-    <p>
-      スマホや動画、ゲームの時間は、<b>「完全にやめる」ことを前提にしていません</b>。
-      実際、多くの中高生は毎日ある程度の余暇時間を持っています。
-    </p>
-    <p>
-      ここで示している <b>1日60〜120分</b> という目安は、
-      「勉強時間を少し増やしたいときに、調整しやすい範囲」
-      としてよく使われる感覚的なラインです。
-    </p>
-    <p>
-      勉強を30分増やしたい日は、スマホ時間を30分だけ見直す。
-      そんな<b>現実的なバランス</b>をイメージするための参考として表示しています。
-    </p>
-  </div>
-      </details>
+
+      <!-- 解説を別カードに分けたい場合は、ここに追加の .card を作って移動してください -->
     </main>
   </div>
 
@@ -423,7 +420,6 @@
         return Math.ceil(x / step) * step;
       }
       function formatHoursRange(low, high){
-        // 0.5h刻み、整数は「10時間」、小数は「10.5時間」
         function fmt(v){
           const isInt = Math.abs(v - Math.round(v)) < 1e-9;
           return isInt ? String(Math.round(v)) : String(v);
@@ -431,7 +427,7 @@
         return '週 ' + fmt(low) + '〜' + fmt(high) + '時間（目安）';
       }
 
-      // 追加：時間を「◯.◯時間」に整形（0.5時間刻み）
+      // 0.5時間刻みの「◯.◯時間」表示
       function formatDecimalHours(hours){
         const rounded = roundTo(hours, 0.5);
         return rounded.toFixed(1) + '時間';
@@ -446,7 +442,6 @@
       };
 
       // ---- Base weekly hours at "about 6 months remaining" (heuristic, not a promise)
-      // Units: hours/week (center value)
       const BASE = {
         test:  { J1: 6,  J2: 7,  J3: 8.5, H1: 7,  H2: 8,  H3: 9 },
         start: { J1: 7,  J2: 8,  J3: 10,  H1: 9,  H2: 11, H3: 12.5 },
@@ -456,15 +451,13 @@
 
       const LEVEL_FACTOR = { std: 1.00, plus: 1.15, high: 1.30 };
 
-      // Deadline factor: combine "締切効果" smoothly, avoid extremes.
-      // weeksRemaining around 26 (≈6 months) => factor ~1.0
       function deadlineFactor(weeksRemaining){
         const ratio = 26 / weeksRemaining;
         const f = Math.pow(ratio, 0.35); // gentle curve
         return clamp(f, 0.80, 1.60);
       }
 
-      // Split weekly hours into weekday + weekend (stable habit)
+      // Split weekly hours into weekday + weekend
       const WEEKDAY_SHARE = 0.65;
 
       function ensureDateValid(){
@@ -472,13 +465,11 @@
         let d = dateEl.value ? startOfDay(new Date(dateEl.value)) : null;
 
         if (!d || isNaN(d.getTime())){
-          // 未入力 -> 3か月後
           d = addMonths(today, 3);
           dateEl.value = toISODate(d);
           return d;
         }
         if (d.getTime() <= today.getTime()){
-          // 今日以前 -> 今日+1か月
           d = addMonths(today, 1);
           dateEl.value = toISODate(d);
           return d;
@@ -503,14 +494,11 @@
 
         const center = base * fDeadline * fLevel;
 
-        // range ±12% (fixed)
         const low = roundTo(center * 0.88, 0.5);
         const high = ceilTo(center * 1.12, 0.5);
 
-        // Model case based on center (not on range)
         const weekCenter = roundTo(center, 0.5);
 
-        // ここが修正点：平日も土日も「hours」で持ち、formatHMで表示
         const weekdayHours = weekCenter * WEEKDAY_SHARE / 5;
         const weekendHours = weekCenter * (1 - WEEKDAY_SHARE) / 2;
 
@@ -534,7 +522,7 @@
         const d = addMonths(today, 3);
         dateEl.value = toISODate(d);
 
-        // Quick buttons（選択状態を視覚化）
+        // Quick buttons (selected state)
         const quickButtons = document.querySelectorAll('button[data-add-month]');
         quickButtons.forEach(btn=>{
           btn.addEventListener('click', ()=>{
