@@ -236,7 +236,6 @@ summary{
           <option value="H2">高2</option>
           <option value="H3">高3</option>
         </select>
-
         <label for="purpose">勉強の目的 <span class="pill">目安調整用</span></label>
         <select id="purpose">
           <option value="test">定期テスト中心</option>
@@ -254,15 +253,13 @@ summary{
 
         <label for="targetDate">目標日（試験日）</label>
         <input id="targetDate" type="date" />
-
+        <div class="sub" style="margin-top:6px;">◯か月後をワンタップでも目標日設定できるよ：</div>
         <div class="quick" aria-label="クイック選択">
           <button class="btn" type="button" data-add-month="1">1か月後</button>
           <button class="btn" type="button" data-add-month="3">3か月後</button>
           <button class="btn" type="button" data-add-month="6">6か月後</button>
           <button class="btn" type="button" data-add-month="12">12か月後</button>
         </div>
-        <div class="sub" style="margin-top:6px;">よく使う期間をワンタップ：</div>
-
         <div class="spacer"></div>
         <button class="btn primary" id="calcBtn" type="button">目安を表示</button>
       </section>
