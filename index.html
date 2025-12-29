@@ -372,6 +372,16 @@ summary{
         return '週 ' + fmt(low) + '〜' + fmt(high) + '時間（目安）';
       }
 
+
+     function formatHM(hours){
+  const totalMinutes = Math.round(hours * 60);
+  const h = Math.floor(totalMinutes / 60);
+  const m = totalMinutes % 60;
+
+  if (h > 0 && m > 0) return `${h}時間${m}分`;
+  if (h > 0) return `${h}時間`;
+  return `${m}分`;
+     } 
       // ---- Title variants (目的別・行動起点)
       const TITLE_BY_PURPOSE = {
         test:  '定期テストに向けて、まず意識したい勉強量',
